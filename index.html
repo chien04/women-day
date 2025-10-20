@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Vietnamese Women's Day 🌸</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Garamond', serif;
+            overflow: hidden;
+            height: 100vh;
+            background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 25%, #fef3c7 50%, #fce7f3 75%, #f3e8ff 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            padding: 20px;
+        }
+
+        .main-text {
+            font-size: clamp(2rem, 8vw, 5rem);
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #ec4899;
+            margin-bottom: 30px;
+            animation: fadeInScale 1.5s ease-out;
+            text-shadow: 
+                0 0 20px rgba(236, 72, 153, 0.4),
+                0 0 40px rgba(236, 72, 153, 0.2);
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .glow-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: #be185d;
+            font-weight: 300;
+            letter-spacing: 1px;
+            animation: fadeInUp 2s ease-out 0.5s both;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 1.5rem;
+            animation: sparkleFloat 3s ease-out forwards;
+            z-index: 5;
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) translateX(var(--tx)) scale(0);
+            }
+        }
+
+        .petal {
+            position: fixed;
+            pointer-events: none;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            animation: petalFall linear forwards;
+            z-index: 3;
+            opacity: 0.8;
+        }
+
+        @keyframes petalFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .glow-effect {
+                width: 300px;
+                height: 300px;
+            }
+
+            .main-text {
+                margin-bottom: 20px;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .glow-effect {
+                width: 200px;
+                height: 200px;
+            }
+
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow-effect"></div>
+    
+    <div class="container">
+        <h1 class="main-text">🌸 Happy Vietnamese Women's Day 💖</h1>
+        <p class="subtitle">Chúc em Liên luôn xinh đẹp và hạnh phúc. Đừng bùn vì chuyện gia đình nữa nha:3</p>
+    </div>
+
+    <script>
+        // Flower petals array
+        const petals = ['🌸', '🌺', '🌼', '🌻', '💐', '🌷', '🌹'];
+        const sparkles = ['✨', '💫', '⭐', '🌟'];
+
+        // Create falling petals
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+            
+            const startX = Math.random() * window.innerWidth;
+            const duration = 6 + Math.random() * 4;
+            const delay = Math.random() * 0.5;
+            const swayAmount = 100 + Math.random() * 200;
+            
+            petal.style.left = startX + 'px';
+            petal.style.top = '-50px';
+            petal.style.setProperty('--tx', (Math.random() - 0.5) * swayAmount + 'px');
+            petal.style.animation = `petalFall ${duration}s linear ${delay}s forwards`;
+            
+            // Add horizontal sway
+            petal.style.setProperty('--sway', Math.sin(Math.random() * Math.PI) * swayAmount);
+            
+            document.body.appendChild(petal);
+            
+            setTimeout(() => petal.remove(), (duration + delay) * 1000);
+        }
+
+        // Create sparkles around cursor/random positions
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+            
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight * 0.6;
+            
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.setProperty('--tx', (Math.random() - 0.5) * 100 + 'px');
+            
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => sparkle.remove(), 3000);
+        }
+
+        // Start petal animation
+        setInterval(createPetal, 300);
+
+        // Create occasional sparkles
+        setInterval(createSparkle, 800);
+
+        // Create initial sparkles
+        for (let i = 0; i < 3; i++) {
+            setTimeout(createSparkle, i * 300);
+        }
+
+        // Responsive petal creation based on screen size
+        function adjustPetalFrequency() {
+            if (window.innerWidth < 768) {
+                // Reduce petal frequency on mobile
+                setInterval(createPetal, 500);
+            }
+        }
+
+        window.addEventListener('resize', adjustPetalFrequency);
+    </script>
+</body>
+</html>
